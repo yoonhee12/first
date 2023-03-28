@@ -1,0 +1,1492 @@
+@charset "UTF-8";
+
+/** 
+태그들의 css 요소들 작업입니다.
+모든 요소는 분류에서 abc 순으로 정렬되어 있습니다.
+  */
+
+/* 반응형을 위한 미디어 쿼리 작업입니다 */
+@media screen and (max-width: 48rem) {
+	main{
+		transform: translateY(20vh);
+	}
+	footer{
+		transform: translateY(20vh);
+	}
+	header{
+		max-height: 24vh;
+		padding-top: 0;
+	}
+	
+	#condition {
+		width: 100%;
+	}
+	.nav-search{
+		width: 100%;
+	}
+	#searchByKey{
+		width: 100%;
+	}
+	
+    .footer-bottom {
+        text-align: center;
+        text-size-adjust: 0.8;
+    }
+
+    .footer-upper-area {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: center;
+       
+        justify-content: flex-end;
+        
+    }
+    
+    .footer-area-item{
+    	margin: 0;
+    }
+    
+    .footer-bottom{
+    	
+    }
+
+    .headline {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        transform: scale(0.8);
+    }
+	.boxFlexTop{
+		margin: 10vh;
+		transform: translateX(10vh);
+	}
+	.btn-dark{
+		font-size: 90%;
+	}
+    .icon-area{
+    	min-height: 5vh;
+    	min-width: 5vh;
+    }
+
+    .item img {
+        height: 12rem;
+    }
+    
+}  
+
+  
+/* 색깔 필터를 클래스화 시켰습니다. */
+.text-filter-red { color : #E1573A; }
+.text-filter-lightgray, .dark-hover-filter { color : #888; }
+.bright-orange-filter { color: #FFB937; }
+.line-bright-filter { color : #d8d8d8; }
+.very-dark-filter { color : #666; }
+.little-dark-filter { color : #777; }
+
+
+
+/* 기본 태그 및 시멘틱 태그 작업입니다.*/
+a{
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	color: #FFB937;
+}
+body{
+	padding: 0;
+	margin: 0;
+}
+
+header{
+	position: fixed;
+	width: 100%;
+	margin : 0;
+	padding-top: 1vh;
+	padding-bottom: 3vh;
+	border-bottom: 1px solid #d8d8d8;
+	box-shadow: 3px 1px 1px #888;
+	background-color: rgba( 255, 255, 255, 0.8 );
+	z-index: 20;
+}
+
+header .container{
+	vertical-align: middle;
+}
+h1{
+	padding: 30px 0;
+}
+h2{
+	font-weight: 900;
+}
+
+ul{
+	list-style:none;
+}
+main{
+	padding-top: 18vh;
+	position: relative;
+	min-height: 65vh;
+}
+footer{
+	padding-top: 30px;
+	border: 1px solid #d8d8d8;
+}
+article{
+	width: 80%;
+	position: relative;
+	margin: 0 auto;
+}
+fieldset label{
+	width: 300px;
+	border: none;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+th label{
+	width: 300px;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+form fieldset legend{
+	font-weight: bold;
+	margin: 15px 0;
+}
+/** 
+클래스의 css 요소들 작업입니다.
+  */
+/* 마진 0 auto 공통 적용 */
+.flex{
+	display: flex;
+	flex-direction: row; 
+}
+.pif_add{
+	position: absolute;
+	bottom: 47px;
+}
+
+.search-view{
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-content: space-between;
+	flex-wrap: wrap;
+}
+.header-mid-area{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.header-mid-area select{
+	border: none;
+	padding: 0 1vh;
+	outline: none;
+	border-radius: 30px;
+}
+.header-mid-area select:focus{
+	border: 1px solid #FFB937;
+}
+.btn-dark{
+	/* width: 60px;
+	height: 48px; */
+	min-width: 6vh;
+	min-height: 3.5vh;
+}
+.btn-dark:hover{
+	background: #FFB937;
+	color: black;
+	border: 1px solid #FFB937;
+}
+#go-to-join-btn{
+	border: none;
+	border-radius: 20px;
+	background-color: #d8d8d8;
+	color: white;
+	padding: 2vh 3vh; 
+}
+#go-to-join-btn:hover{
+	background-color: #666;
+	color: #FFB937;
+}
+#find-acc-form-btn{
+	text-align: center;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+	min-height: 50vh;;
+}
+#find-acc-form-btn input{
+	border : none;
+	background: none;
+}
+#find-acc-form-btn div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 42vh;
+	height: 25vh;
+	background: #FFB937;
+	margin: 2vh;
+	border-radius: 10px;
+	font-size: 220%;
+	font-style: bold;
+	color: white;
+	transition: 0.3s;
+}
+#find-acc-form-btn div:first-child{
+	background: #BBF4F6;
+}
+#find-acc-form-btn div:hover{
+	background: #DDF3C8;
+	color: #FFB937;
+	cursor: pointer;
+}
+.header-title{
+	max-height: 5vh;
+	margin-top: 0.5vh;
+}
+.navbar-brand{
+	vertical-align: middle;
+	/* line-height: 54px; */
+}
+.navbar-brand img{
+	height: 100%
+}
+.nav-search{
+	vertical-align: middle;
+	line-height: 54px;
+	border: none;
+	padding: 0 2vh;
+	background: #ececec;
+	border-radius: 30px;
+}
+.main-top-area{
+	margin: 0 auto;
+	/*아이템이 적어서 80에서 50으로 수정*/
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.main-page-card{
+	/* flex: auto; */
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 20px;
+	/* margin: 20px; */
+	/* width: 27vh; */
+	/* height: 27vh; */
+	min-width: 27vh;
+	min-height: 33vh;
+	transition: 1s;
+	/* overflow: hidden; */
+}
+.main-page-card:hover{
+	transform: translateY(-2vh);	
+}
+.main-page-card:hover .main-page-card-black-area{
+	transform: translateY(-31vh);
+}
+.main-page-card img{
+	 width:80%;
+    height:80%;
+    object-fit:cover;
+}
+.main-page-card img:nth-child(2){
+	width:100%;
+    height:100%;
+}
+.card-inner{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	border: 2px solid #d8d8d8;
+	border-radius: 20px;
+	width: 95%;
+	height: 95%;
+	box-shadow: 5px 2px 2px #464646;
+	padding-top: 3vh;
+}
+
+.card-inner a{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+/* .main-page-card-black-area{
+	opacity: 0.8;
+	background: black;
+	min-width: 120%;
+	min-height: 120%;
+	transition: 0.5s;
+	margin-left: -3vh;
+	margin-top: 3vh;
+} */
+.grayscale {
+	filter: grayscale(100%); 
+}
+.header-btn{
+	border: none;
+	border-radius: 20px;
+	padding: 15px 20px;
+	background: none;
+}
+.header-btn:hover{
+	background: #D8D8D8;
+}
+.footer-upper, .footer-bottom, #joinForm{
+	margin: 0 auto;
+}
+.login{
+	font-weight: 900;
+	font-size: 400%;
+}
+.footer-upper, .footer-bottom{
+	color: white;
+}
+.footer-upper a{
+	color: white;
+}
+.footer-bottom{
+	text-align: left;
+}
+.footer-bottom a{
+	color: #666666;
+}
+.footer-bottom h5, .footer-bottom h6{
+	color: #666666;
+}
+.contract-form textarea{
+	max-width: 95%;
+	min-width: 90%;
+	width: 92%;
+	padding: 2vh;
+}
+.contract-form-content{
+	margin-bottom: 5vh;
+	padding-bottom: 5vh;
+}
+.contract-form h2{
+	padding-top: 3vh;
+}
+.slide{
+	transition-duration: 0.5s;
+}
+.slide .item{
+	width: 20vh;
+	height: 14vh;
+	overflow: hidden;
+	border: 1px solid black;
+}
+.slide .item img{
+	width: 107%;
+	height: 107%;
+}
+.footer-upper-area{
+	position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-upper-left{
+	position: relative;
+	display : flex;
+	justify-content: space-between;
+	flex-direction: row;
+	width: 60%;
+}
+.footer-upper-right{
+	position: relative;
+    width: 38%;
+    display: flex;
+    justify-content: flex-end;
+}
+.icon-area{
+	border: none;
+	border-radius: 50%;
+	background: #666666;
+	margin: 0 15px;
+	width: 62px;
+	height: 62px;
+	color: white;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-area{
+
+}
+.icon-area:hover{
+	color: #FFB937;
+	background: #888888;
+	cursor: pointer;
+}
+
+.footer-area-item{
+	padding: 0;
+	border: none;
+	/* width: 15%;
+	height: 9vh; */
+	text-align: center;
+	vertical-align: middle;
+	font-size: 90%;
+	font-size: 110%;
+	font-style: bold;
+	border-right: 1px solid #d8d8d8;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-area-item:last-child{
+	border-right: none;
+}
+.footer-area-item a{
+	color: #666;
+}
+.footer-area-item a:hover{
+	color: #FFB937;
+}
+.footer-content{
+	width : 1140px;
+}
+
+.footer-content .row{
+	width : 1140px;
+}
+
+.top_Icon{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.boxFlexTop{
+	display : flex;
+	justify-content: space-between;
+	/* flex-direction: row; */
+	margin : 30px 0;
+	vertical-align: middle;
+	flex-wrap: wrap;
+}
+
+.navbar{
+	padding-left: 15em;
+}
+
+.nav-item a{
+	color: white;
+}
+
+.nav-item a:hover{
+	color: yellow;
+}
+
+#navbarSupportedContent ul li a{
+	margin : 10px 15px;
+	padding : 0px 30px;
+}
+
+
+
+.item img{
+	width: 106%;
+  	height: 106%;
+  	transform: translate(-0.6vh, -0.6vh);
+}
+
+.slider {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    margin: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  
+.slider::-webkit-scrollbar {
+display: none;
+}
+
+.slider .slide {
+display: flex;
+position: absolute;
+left: 0;
+transition: 0.3s left ease-in-out;
+}
+
+.slider .item {
+margin-right: 10px;
+}
+
+.slider .item:last-child {
+margin-right: 0;
+}
+
+.ctrl {
+text-align: center;
+margin-top: 5px;
+}
+
+.ctrl-btn {
+padding: 20px 20px;
+min-width: 50px;
+background: #fff;
+border: none;
+font-weight: 600;
+text-align: center;
+cursor: pointer;
+outline: none;
+transition: 0.5s;
+
+position: absolute;
+top: 50%;
+margin-top: -27.5px;
+border: 1px solid black;
+}
+.ctrl-btn:hover{
+	background: black;
+	color: white;
+}
+
+.ctrl-btn.pro-prev {
+left: 0;
+}
+
+.ctrl-btn.pro-next {
+right: 0;
+}
+
+.img_thumb_view{
+	width: 710px;
+	height: 400px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.img_thumb_view img{
+	margin-left: -2vh;
+	margin-top: -1.5vh;
+	max-width:107%; 
+	max-height:107%;
+}
+.img_thumb_view div{
+	position: absolute;
+	background-color: rgba( 172, 172, 172, 0.9 );
+	font-size: 100%;
+	width: 15vh;
+	height: 6vh;
+	line-height: 6vh;
+	border-radius: 20px;
+	z-index: 10;
+	color: red;
+	text-align: right;
+	right: 33vh;
+	top: 46vh;
+	padding-right: 3vh;
+}
+.writer-Info{
+	margin: 3vh auto;
+	text-align: center;
+	padding-bottom: 2vh;
+}
+.writer-profile{
+	border-radius: 50%;
+	overflow: hidden;
+	width: 20vh;
+	height: 20vh;
+	border: 2px solid black;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+.writer-profile img{
+	max-height: 99%;
+}
+.recipe-content{
+	padding: 15vh 0;
+	width: 90%;
+	/* min-height: 30vh; */
+	text-align: center;
+	font-size: 130%;
+	font-style: bold;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+/* 레시피 카테고리 클래스 모음 */
+.recipe_category_top_area{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.recipe_category_filter a{
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+#recipe-reply-area, .recipe-top-area{
+	margin: 0 auto;
+	padding: 0;
+}
+.recipe-info{
+	/* border-top: 1px solid #d8d8d8; */
+	margin: 5vh auto;
+	border-bottom: 1px solid #d8d8d8;
+}
+.recipe-top-area{
+	/* background: silver; */
+	padding: 20px;
+	border-radius: 10px;
+}
+.recipe-ingredients{
+	text-align: center;
+	border-bottom: 1px solid #d8d8d8;
+	margin: 5vh 0;
+	padding-top: 4vh;
+	padding-bottom: 12vh;
+	font-size: 130%;
+	font-style: bold;
+}
+.recipe-ingredients{
+	margin-bottom: 5vh;
+}
+.recipe-ingredients pre{
+	font-style: bold;
+	font-size: 110%;
+}
+.recipe-ingredients span{
+	position: absolute;
+	left: 20%;
+	color: gray;
+	font-size: 115%;
+	margin-top: -1vh;
+}
+.recipe-ingredients span b{
+	color: #666;
+}
+.recipe-content{
+	border-top: 1px solid #d8d8d8;
+	border-bottom: 1px solid #d8d8d8;
+}
+.recipe-card{
+	border: none;
+	border-radius: 30px;
+	background-color: #d8d8d8;
+	width: 34vh;
+	min-height: 50vh;
+	margin: 2vh;
+	padding: 2vh 1vh;
+	margin-bottom: 4vh;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: flex-start;
+}
+.recipe-card .item{
+	width: 30vh;
+  	height: 20vh;
+	border: 1px solid black;
+	overflow: hidden;
+	border-radius: 10px;
+	margin: 2vh auto;
+}
+.recipe-card img{
+	
+}
+.recipe-card div{
+	margin-bottom: 0.3vh;
+}
+.recipe-card-likes{
+	width: 3vh;
+	height: 3vh;
+}
+.recipe-card-nick-area{
+	margin-bottom: 0.5vh;
+	padding-bottom: 1vh;
+}
+.recipe-card-nick-area b{
+	color: #445EDD;
+}
+.processImgs{
+	/* width: 300px; */
+	height: 25vh;
+	overflow: hidden;
+	border-radius: 20px;
+}
+.processimgs-description{
+	word-break:break-all;
+	padding: 0 2vh;
+}
+.processImgs img{
+	height: 100%;
+}
+
+/*  recipe-process는 레시피를 등록(recipeForm)할 때 쓰는 클래스입니다. */
+.recipe-process{
+	width: 90%;
+	/* border-top: 1px solid #d8d8d8; */
+	margin: 1vh;
+}
+.recipe-process h1{
+	font-size: 300%;
+}
+.recipe-process td{
+	padding: 2vh 0;
+}
+.recipe-process b{
+	background: #666;
+	color: white;
+	padding: 3vh 5vh;
+	border-radius: 50%;
+}
+.recipe-process textarea{
+	width: 99%;
+}
+.recipe-process h2, .recipe-top-area h1{
+	text-align: center;
+}
+.recipe-process h2{
+	padding-top: 4vh;
+}
+.recipe-top-area h1{
+	font-weight: 900;
+}
+.recipe-process tr{
+	/* border: 1px solid black; */
+	padding: 5px;
+	border-radius: 20px;
+}
+.recipe-process tr:first-child{
+	border: none;
+}
+.recipe-process tr td{
+	text-align: center;
+}
+.prs_add_btn{
+	
+}
+.recipe_process_edit_area{
+	position: fixed;
+	right: 0;
+	bottom: 20%;
+	width: 30%;
+	height: 60%; 
+}
+.recipe-reply-view{
+	min-height: 30vh;
+}
+.recipe-reply-input{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	min-height: 12vh;
+}
+.recipe-reply-input form div{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+}
+
+
+
+/*
+
+.recipe-reply-input form div div{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+}
+
+.recipe-reply-input form div div:last-child{
+	vertical-align: middle;
+}
+.recipe-reply-input a{
+	padding: 2vh 3vh;
+	background: #666;
+	color: white;
+	border-radius: 20px;
+	vertical-align: middle;
+}
+
+.recipe-reply-input a:hover{
+background: #777;
+color: #FFB937;
+}
+
+*/
+
+.save-rep-btn{
+	padding: 1rem 2rem;
+	background: #666;
+	color: white;
+	border-radius: 20px;
+	line-height: 5vh;
+}
+.save-rep-btn a{
+	color: white;
+}
+.save-rep-btn:hover, .save-rep-btn a:hover{
+	background: #777;
+	color: #FFB937;
+}
+
+
+
+
+.categoryListTitle{
+	
+}
+.categoryListTitle b, .main-contents-list b{
+	font-size: 200%;
+	font-weight: 700;
+	color: purple;
+}
+.categoryListTitle ul li{
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.pull-right{
+	float: right;
+}
+.main-contents-list{
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-content: space-between;
+	flex-wrap: wrap;
+}
+
+.sub_menu_mypage{
+	position: relative;
+	float: left;
+	width: 20%;
+}
+.sub_menu_mypage ul li{
+	margin: 30px 0;
+	padding: 35px 20px;
+	border: 2px solid #666;
+	width: 48%;
+	border-radius: 20px;
+	font-style: bold;
+	font-weight: 800;
+	text-align: center;
+	box-shadow: 3px 1.5px 1.5px #464646;
+}
+/** 
+아이디의 css 요소들 작업입니다. (분류 진행 중)
+  */
+#paging{
+	margin-top: 15px;
+	text-align: center;
+	/* transform: translate(-275px); */
+}
+#main-favorite{
+	
+	
+}
+#navbarSupportedContent{
+	text-align: center;
+}
+#loginOrJoin{
+	display: flex;
+	justify-content: flex-end;
+	vertical-align: middle;
+}
+#loginOrJoin{
+	
+}
+#loginOrJoin input, #loginOrJoin a{
+	margin: 0 5px;
+}
+#loginOrJoin:hover #loginBtn, #loginOrJoin:hover #joinBtn{
+	
+}
+#loginBtn, #joinBtn{
+	
+}
+#loginBtn{
+	
+}
+#joinBtn{
+	
+}
+#buttons{
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+}
+#buttons input{
+	border: none;
+	border-radius: 20px;
+	background: #808080;
+	color: white;
+	padding: 15px 27px;
+	margin: 20px;
+}
+#buttons input:hover{
+	color: #FFB937;
+}
+
+#list{
+	margin-top: 10vh;
+}
+#recipeList_left{
+	position: relative;
+	background: green;
+	float: left;
+	width: 25%;
+	min-height: 70vh;
+}
+#recipeList_main{
+	position: relative;
+	background: orange;
+	float: right;
+	width: 75%;
+	min-height: 70vh;
+}
+#recipe-reply-area{
+	margin: 0 auto;
+	min-height: 40vh;
+	border-top: 1px solid #d8d8d8;
+	border-bottom: 1px solid #d8d8d8;
+	border: none;
+	text-align: center;
+}
+#recipe-reply-area h5{
+	text-align: center;
+}
+#recipe-reply-area table{
+	margin: 0 auto;
+	width: 90%;
+}
+#recipe-reply-area table tr td{
+	padding: 10px 0;
+	border-bottom: 1px solid #d8d8d8;
+}
+#recipe-update{
+	border: none;
+	width: 50%;
+	margin: 0 auto;
+}
+#recipe-update h1{
+	text-align: center;
+}
+#recipe-update input{
+	padding: 7px 4px;
+}
+#recipe-update select{
+	padding: 1vh;
+	padding-right: 2vh;
+}
+#recipe-update textarea{
+	width: 90%;
+	padding: 1vh;
+}
+#recipe-update form table tr{
+	border-top: 1px solid #d8d8d8;
+	border-bottom: 1px solid #d8d8d8;
+}
+#recipe-update form table tr th{
+	width: 30%;
+}
+#recipe-update form table tr th, #recipe-update form table tr td{
+	padding: 30px 0;
+}
+#recipe-update form table tr td{
+	width: 70vh;
+}
+#recipe-update form table tr th{
+	width: 15vh;
+}
+#recipe-update .btn{
+	border-radius: 20px;
+	border: none;
+	padding: 1vh 2vh;
+	transition: 0.5s;
+}
+#recipe-update .btn:hover{
+	background: #d8d8d8;
+}
+#like-btn{
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 5vh;
+}
+#like-btn img{
+	width: 90px;
+	height: 90px;
+	transition: 0.5s;
+}
+#like-btn img:hover{
+	width: 110px;
+	height: 110px;
+}
+#recipe-button-area{
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-end;
+}
+#recipe-form-btn-area{
+	width: 85%;
+	display: flex;
+	justify-content: flex-end;
+}
+#recipe-form-bottom-btn-area{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 3vh;
+}
+#recipe-form-btn-area input, #recipe-button-area input{
+	margin: 20px 10px;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 10px;
+	background: #d8d8d8;
+	color: black;
+}
+#recipe-form-btn-area input:hover, #recipe-button-area input:hover{
+	background: black;
+	color: white;
+} 
+
+#recipe-category-list{
+	
+}
+/*  recipeUpdateForm.jsp 의 css 입니다.*/
+#recipe-update-form{
+	width: 70%;
+	
+}
+#recipe-update-form select, #recipe-update-form input, #recipe-update-form textarea{
+	padding: 1vh;
+}
+#recipe-update-form textarea{
+	width: 90%;
+}
+#recipe-update-form h1{
+	text-align: center;
+	padding-top: 5vh;
+}
+#recipe-update-form tr, #recipe-update-form th{
+	border-left: none;
+}
+#recipe-update-form #list{
+	width: 90%;
+	margin: 0 auto;
+}
+#recipe-update-form #list td, #recipe-update-form #list tr, #recipe-update-form #list th{
+	padding: 3vh 2vh;
+}
+.recipe-update-form-process th{
+	font-size: 170%;
+	font-size: bold;
+}
+.recipe-update-process{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between; 
+	align-content: center;
+	padding: 2vh 0;
+	margin: 2vh 0;
+}
+.recipe-update-process div{
+	display: flex;
+	justify-content: center; 
+	align-content: center;
+}
+.recipe-update-process div:first-child{
+	width: 5vh;
+	font-size: 150%;
+	vertical-align: middle;
+	flex-direction: column;
+	justify-content: center;
+}
+.recipe-update-process div:nth-child(2){
+	width: 40vh;
+	overflow: hidden;
+}
+.recipe-update-process div:last-child{
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.recipe-update-process div textarea{
+	width: 100%;
+}
+.recipe-update-process img{
+	width: 100%;
+	height: 100%;
+}
+.recipe-update-form-btn-area, .recipe-update-form-bottom-area{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.recipe-update-form-bottom-area{
+	justify-content: center;
+}
+.recipe-update-form-btn-area input, .recipe-update-form-bottom-area input{
+	padding: 4vh 5vh;
+	background: #d8d8d8;
+	margin-left: 3vh;
+	transition: 0.5s;
+	color: #fff;
+}
+.recipe-update-form-btn-area input:hover, .recipe-update-form-bottom-area input:hover{
+	background: #666;
+	color: #FFB937;
+}
+.ingredients-area{
+	width: 60%;
+	margin-top: 2vh;
+	margin-right: 1rem;
+	border: none;
+	border-bottom: 1px solid #666;
+}
+/* -------------------------------------- */
+#qnaBoard tr th, #qnaBoard tr td{
+border: 1px dotted black;
+text-align: center;
+padding:10px;
+}
+#qna_sub_menu{
+	float: left;
+	left: -30px;
+	position: fixed;
+	top: 33%;
+}
+#qna_sub_menu ul li{
+	border: 2px solid white;
+	padding: 30px 5px;
+	background: black;
+	text-align: center;
+	width: 15vh;
+	border-radius: 20px;
+	margin: 10px 0;
+}
+#qna_sub_menu ul li a{
+	color: white;
+}
+#qna_sub_menu ul li a:hover{
+	color: #FFB937;
+}
+#qnaListTable{
+	margin: 0 auto;
+	border-top: 1.5px solid black;
+	border-bottom: 1.5px solid black;
+}
+#qnaListTable tr, #qnaListTable tr th, #qnaListTable tr td,
+#qna-my-list tr, #qna-my-list tr th, #qna-my-list tr td{
+	padding: 10px;
+}
+#qnaListTable tr{
+	border-bottom: 1px solid gray;
+}
+#qna-my-list{
+	
+}
+#qna-my-list table{
+	margin: 0 auto;
+	border-top: 1.5px solid black;
+	border-bottom: 1.5px solid black;
+}
+#qna-my-list tr{
+	border-bottom: 1px solid gray;
+}
+#qna-write{
+	border-top: 1px solid #d8d8d8;
+}
+#qna-write h2{
+	padding-top: 45px;
+	transform: translateX(25%);
+}
+#qna-write h3{
+	padding-top: 30px;
+	transform: translateX(25%);
+}
+
+#qna-write table{
+	margin: 0 auto;
+	border-bottom: 1.5px solid black;
+	width: 55%;
+}
+#qna-write tr{
+	border-bottom: 1px solid gray;
+}
+#qna-write tr th{
+	text-align: center;
+}
+#qna-write table tr td{
+	padding: 1vh 0;
+}
+#qsubject, #qna-write table tr td textarea{
+	width: 100%;
+}
+#qna-write tr:first-child{
+	border-top: none;
+}
+#qna-write tr:last-child{
+	border-bottom: none;
+}
+#qna-write #buttons{
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+}
+#qna-write legend{
+	opacity: 0;
+}
+#qna-detail-view{
+	text-align: center;
+	padding-top: 3rem;
+	padding-bottom: 5rem;
+}
+#qna-detail-view h2{
+	margin-bottom: 1.5rem;
+}
+#qna-detail-view h5{
+	margin-bottom: 3rem;
+}
+#qna-detail-view table{
+	margin: 0 auto;
+}
+#qna-detail-view th, #qna-detail-view td, #qna-detail-view tr{
+	padding: 2vh 1vh;
+	border-bottom: 0.5px solid #d8d8d8;
+	vertical-align: middle;
+	line-height: 100%;
+	word-break:break-all;
+}
+#qna-detail-view pre{
+	word-break:break-all;
+}
+#qna-content-area{
+	line-height: 2vh;
+}
+#qna-update-form{
+	padding-top: 3rem;
+	padding-bottom: 5rem;
+}
+#qna-update-form h2, #qna-update-form h3{
+	text-align: center;
+}
+#qna-update-form table{
+	margin: 0 auto;
+}
+#qna-update-form #qna-update-form-content{
+	width: 60%;
+	margin: 0 auto;
+}
+#qna-update-form input, #qna-update-form textarea{
+	width: 73%;
+}
+.qna-update-table{
+	display: flex;
+	flex-direction: row;
+	margin: 2vh 0;
+}
+.qna-update-table:first-child{
+	padding-top: 1vh;
+}
+.qna-update-table label{
+	min-width: 7vh;
+	max-width: 20vh;
+}
+
+/* --------------------------- */
+#loginForm{
+	text-align: center;
+}
+#loginField{
+	padding: 30px 0;
+	transform: translateX(-7vh);
+}
+#joinForm{
+	margin: 0 auto;
+	width: 900px;
+}
+#join div{
+	border-top: 1px solid #B2B2B2;
+	padding-top: 10px;
+}
+#join div:first-child{
+	border-top: none;
+}
+#join div:last-child {
+	border-bottom: 1px solid #B2B2B2;
+}
+#cooking-time{
+	color: black;
+	text-align: center;
+	margin: 0 auto;
+}
+#memberdetail{
+	margin-left: 30vh; 
+	padding: 30px 0;
+}
+#memberdetail label{
+	width: 60vh;
+}
+#memberdetail legend{
+	padding-left: 4vh;
+	font-size: 220%;
+}
+#memberdetail label b{
+	margin-left: 3vh;
+	padding-bottom: 1vh;
+	border-bottom: 1px solid #d8d8d8;
+}
+#memberdetail-profile{
+	width: 45vh;
+	height: 45vh;
+	overflow: hidden;
+	border: 2px solid #666;
+	border-radius: 60px;
+}
+#memberdetail-profile img{
+	height: 100%;
+	width: 45vh;
+}
+#memberdetail #buttons{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	transform: translateX(-10vh);
+}
+#myrecipe-list{
+	width: 60%;
+}
+#myrecipe-list h2{
+	text-align: center;
+	margin: 20px 0;
+	padding: 10px 0;
+}
+#myrecipe-list table{
+	margin: 0 auto;
+}
+#myrecipe-list tr{
+	border-bottom: 1px solid #d8d8d8; 
+	
+}
+#myrecipe-list td, #myrecipe-list th{
+	padding: 2vh 0; 
+}
+#myrecipe-list tr:last-child th a{
+	background: gray;
+	padding: 1.5vh 2vh;
+	border: none;
+	border-radius: 20px;
+	color: white;
+}
+#myrecipe-list tr:last-child th a:hover{
+	color: #FFB937;
+}
+#myrecipe-list-paging{
+	text-align: center;
+}
+#interest-list-view{
+	
+}
+#interest-list-view{
+	width: 60%;
+	text-align: center;
+}
+#interest-list-view h2{
+	text-align: center;
+	margin: 20px 0;
+	padding: 10px 0;
+}
+#interest-list-view table{
+	margin: 0 auto;
+}
+#interest-list-view tr{
+	border-bottom: 1px solid #d8d8d8; 
+	
+}
+#interest-list-view td, #interest-list-view th{
+	padding: 2vh 0; 
+}
+#interest-list-view tr:last-child th a{
+	background: gray;
+	padding: 1.5vh 2vh;
+	border: none;
+	border-radius: 20px;
+	color: white;
+}
+#interest-list-view tr:last-child th a:hover{
+	color: #FFB937;
+}
+
+#favorite-list-view{
+	width: 60%;
+	min-height: 55vh;
+}
+#favorite-list-view h2{
+	text-align: center;
+	margin: 20px 0;
+	padding: 10px 0;
+}
+#favorite-list-view table{
+	margin: 0 auto;
+}
+#favorite-list-view tr{
+	border-bottom: 1px solid #d8d8d8; 
+	
+}
+#favorite-list-view td, #favorite-list-view th{
+	padding: 2vh 0; 
+}
+#favorite-list-view tr:last-child th a{
+	background: gray;
+	padding: 1.5vh 2vh;
+	border: none;
+	border-radius: 20px;
+	color: white;
+}
+#favorite-list-view tr:last-child th a:hover{
+	color: #FFB937;
+}
+#favorite-list-view{
+	text-align: center;
+}
+#favorite-list-view #myrecipe-list-paging{
+
+}
+.admin-board{
+	
+}
+
+#announcement h1, #announcement h3{
+	text-align: center;
+}
+
+.recipe_category_filter{
+	margin: 0 auto;
+	font-size:150%;
+	font-weight:bold;
+	text-align:center;
+}
+
+/* show and hide 관련 클래스 입니다.*/
+.show_and_hide{
+    transition-duration: 0.2s;
+}
+.hide{
+    opacity: 0;
+}
+.show{
+    opacity: 100;
+}

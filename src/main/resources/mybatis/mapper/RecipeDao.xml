@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.todaytable.dao.IRecipeDao">
+
+	<resultMap  id="RecipeMap" type="java.util.HashMap"></resultMap>
+	<resultMap  id="RecipeMap2" type="java.util.HashMap"></resultMap>
+	<resultMap  id="RecipeMap3" type="java.util.HashMap"></resultMap>
+	<resultMap  id="RecipeMap4" type="java.util.HashMap"></resultMap>
+	<resultMap  id="RecipeMap5" type="java.util.HashMap"></resultMap>
+	
+	<select id="getRecipeBannerList" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getRecipeBannerList(
+				#{ref_cursor3, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap3}
+			)
+		}
+	</select>
+	
+	<select id="recipeCategory" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL recipeCategory(
+				#{recipekey},
+				#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap2}
+			)
+		}
+	</select>
+	
+	<select id="getCategory" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getCategory(
+				#{recipekey},
+				#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap2},
+				#{startNum},
+				#{endNum},
+				#{kind}
+			)
+		}
+	</select>
+	
+	<!-- <select id="getRecipeCounts" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getRecipeCounts(
+				#{recipekey}, #{cnt, mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</select> -->
+	
+	<select id="getRecipeCounts" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getRecipeCounts(
+				#{recipekey}, #{kind}, #{cnt, mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</select>
+	
+	<update id="addRecipeView" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL addRecipeView(
+				#{rnum}
+			)
+		}
+	</update>
+	
+	<select id="recipeFavoriteAndRec" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL recipeFavoriteAndRec(
+				#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap},
+				#{startNum}, #{endNum}, #{kind}
+			)
+		}
+	</select>
+	
+	
+	<select id="getRecipe" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getRecipe(
+				#{rnum},
+				#{ref_cursor1, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap},
+				#{ref_cursor2, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap2},
+				#{ref_cursor3, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap3},
+				#{ref_cursor4, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap4},
+				#{ref_cursor5, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap5},
+				#{likeyn ,mode=OUT, jdbcType=VARCHAR, javaType=STRING},
+				#{reportyn, mode=OUT, jdbcType=VARCHAR, javaType=STRING},
+				#{id}
+			)
+		}
+	</select>
+	
+	<select id="getRecipeForUpdate" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getRecipeForUpdate(
+				#{rnum},
+				#{ref_cursor1, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap},
+				#{ref_cursor2, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap2},
+				#{ref_cursor3, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap3},
+				#{ref_cursor4, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap4}
+			)
+		}
+	</select>
+	
+	<!-- <select id="getRecipe" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getRecipe(
+				#{rnum},
+				#{ref_cursor1, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap},
+				#{ing, mode=OUT, jdbcType=VARCHAR},
+				#{ref_cursor2, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap2},
+				#{ref_cursor3, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap3}
+			)
+		}
+	</select> -->
+	
+	<delete id="deleteRecipe" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL deleteRecipe( #{rnum} )
+		}
+	</delete>
+	
+	<!-- <update id="addReply" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL addReply(
+				#{id}, #{rnum}, #{reply}, #{replyseq, mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</update>  -->
+	
+	<update id="addReply" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL addReply(
+				#{id}, #{rnum}, #{reply}
+			)
+		}
+	</update> 
+	
+	<insert id="insertRecipe" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL insertRecipe(
+				#{id}, #{subject}, #{content}, #{thumbnail}, #{cookingtime}, #{type}, #{theme}, #{ing}, 
+				#{max_rnum, mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</insert>
+	
+	<insert id="insertProcess" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL insertProcess(
+				#{rnum}, #{iseq}, #{links}, #{description}
+			)
+		}
+	</insert>
+	
+	<!-- <insert id="insertIng" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL insertIng( 
+				#{tag}, #{rnum}, #{quantity} 
+			)
+		}
+	</insert> -->
+	
+	<!-- <insert id="insertIng" statementType="CALLABLE">
+		{
+			CALL insertIng( #{param1}, #{param2}, #{param3} )
+		}
+	</insert> -->
+	
+	<select id="getTagCnt" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getTagCnt(#{tag}, #{cnt, mode=OUT, jdbcType=INTEGER})
+		}
+	</select>
+	
+	<insert id="insertTag" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL insertTag(
+				#{tag}, #{rnum}, #{quantity}
+			)
+		}
+	</insert>
+	
+	<insert id="insertRecipeTag" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL insertRecipeTag(
+				#{tag}, #{rnum}, #{quantity}
+			)
+		}
+	</insert>
+	
+	<update id="updateRecipe" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL updateRecipe(
+				#{subject}, #{content}, #{thumbnail}, #{cookingtime}, #{type}, #{theme}, #{rnum} 
+			)
+		}
+	</update>
+	
+	<delete id="deleteProcess" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL deleteProcess(
+				#{rnum} 
+			)
+		}
+	</delete>
+	
+	<select id="getCountsByKey" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getCountsByKey(
+				#{tableName}, #{key}, #{cnt , mode=OUT, jdbcType=INTEGER }
+			)
+		}
+	</select>
+	
+	<select id="selectListByKey" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL selectListByKey(
+				#{tableName}, #{key}, #{startNum}, #{endNum}, 
+				#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap }
+			)
+		}
+	</select>
+	
+	<select id="getReplyCount" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getReplyCount( #{RNUM}, #{replycnt , mode=OUT, jdbcType=INTEGER} )
+		}
+	</select>
+	
+  
+  	<delete id="deleteReply">
+		delete from reply where replyseq = #{param1}
+	</delete>
+	
+	<select id="likeRecipe" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL likeRecipe(
+				#{id}, #{rnum} 
+			)
+		}
+	</select>
+	
+	<select id="reportRecipe" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL reportRecipe(
+				#{id}, #{rnum} 
+			)
+		}
+	</select>
+	
+	
+	<select id="getMIFAllCount" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getMIFAllCount(
+				#{id}, #{tableName},
+				#{cnt, mode=OUT, jdbcType=INTEGER}
+			)
+		}
+	</select>
+
+
+<select id="getMIFListtable" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getMIFListtable(
+				#{id}, #{tableName},#{startNum}, #{endNum},
+				#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap }
+			)
+		}
+	</select>
+	
+	
+	
+	<select id="getFavoriteList" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL getFavoriteList(
+				#{id},
+				#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=RecipeMap }
+			)
+		}
+	</select>
+	
+	
+	<update id="changeFuseyn" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{
+			CALL changeFuseyn(
+			#{rnum},#{id}
+			)
+		}
+	</update>
+	
+</mapper>

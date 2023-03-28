@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.todaytable.dao.IMemberDao">
+
+	<resultMap  id="memberMap" type="java.util.HashMap"></resultMap>
+	<resultMap  id="memberMap2" type="java.util.HashMap"></resultMap>
+	<!-- <select id ="compareAdminOrMember" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL  compareAdminOrMember (
+			#{id},#{aid},
+			#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap },
+			#{loginStatus, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap2 }
+			)
+		}
+		
+	</select> -->
+	<insert id ="insertMemberttable" statementType="CALLABLE" parameterType="java.util.HashMap">
+	{
+		CALL insertMemberttable(
+		#{id}, #{pwd},#{name},#{nick},#{email},#{phone},#{zip_num},#{address1},#{address2},#{address3},#{img}
+		)
+	}
+	</insert>
+	
+	<update id ="updateMemberttable" statementType="CALLABLE"  parameterType="java.util.HashMap">
+	{
+		CALL updateMemberttable(
+		#{ID}, #{PWD},#{NAME},#{NICK},#{EMAIL},#{PHONE},#{ZIP_NUM},#{ADDRESS1},#{ADDRESS2},#{ADDRESS3},#{IMG}
+		)
+	}
+	</update>
+	<select id ="getMembersList" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL  getMembersList (
+			#{id},
+			#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap }
+			)
+		}
+		
+	</select>
+	<select id ="getAdminttable" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL  getAdminttable (
+			#{aid},
+			#{loginStatus, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap2 }
+			)
+		}
+		
+	</select>
+			
+	<select id="findId" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL findId( 
+			#{name}, #{phone}, 
+			#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap} 
+			)
+		}
+	</select>
+	
+	<update id="updatePwd" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{
+			CALL updatePwd( #{id}, #{pwd}, #{result, mode=OUT, jdbcType=INTEGER})
+		}
+	</update>
+	
+
+	<update id="withDrawal" >
+		update members set useyn='N' where id = #{param1}
+	</update>
+</mapper>

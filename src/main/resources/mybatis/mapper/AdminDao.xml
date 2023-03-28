@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.todaytable.dao.IAdminDao">
+
+	<resultMap  id="AdminMap" type="java.util.HashMap"></resultMap>
+<!-- 페이징카운트 -->
+<select id="adminGetAllCount" statementType="CALLABLE" parameterType="java.util.HashMap">
+	{
+		CALL adminGetAllCount(
+			#{tableName},#{key},
+			#{cnt,mode=OUT,jdbcType=INTEGER}
+		)
+	}
+</select>
+<!-- 회원목록 -->
+<select id="getAdminMemberList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminMemberList (
+         #{startNum}, #{endNum},#{key},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!-- 휴면회원전환 -->
+<update id="adminSleepMem">
+	{
+         CALL adminSleepMem (
+         #{useid}
+         ) 
+      }
+</update>
+<!-- 회원디테일 -->
+<select id="getAdminMemDetail" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminMemDetail (
+         #{id},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!--Qna리스트  -->
+<select id="getAdminQnaList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminQnaList (
+         #{startNum}, #{endNum},#{key},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!--Qna삭제  -->
+<delete id="adminDeleteQna">
+	{
+         CALL adminDeleteQna (
+         #{useid}
+         ) 
+      }
+</delete>
+<!-- Qna디테일 -->
+<select id="getAdminQnaDetail" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminQnaDetail (
+         #{qseq},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!--qna답변  -->
+<insert id="adminSaveReply" statementType="CALLABLE">
+	{
+         CALL adminSaveReply (
+         #{param1}, #{param2}
+         ) 
+      }
+</insert>
+<!-- 댓글리스트 -->
+<select id="getAdminReplyList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminReplyList (
+         #{startNum}, #{endNum},#{key},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!-- 댓글 삭제 -->
+<delete id="adminDeleteReply">
+	{
+         CALL adminDeleteReply (
+         #{replyseq}
+         ) 
+      }
+</delete>
+
+<!-- 대쉬보드 카운트값 조회(이중배열/변수명에따라 다른값 조회) -->
+<select id="adminGetCounts" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL adminGetCounts (#{table}, #{result, mode=OUT, jdbcType=INTEGER})}
+</select >
+<!-- 어드민 리스트 조회(id값으로) -->
+
+<select id="getAdminList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminList (
+         #{id},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >	
+<!-- 대쉬보드 (베스트 조회 레시피, 최근 댓글 (3개씩)) -->
+<select id="adminDashList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL adminDashList (
+         #{table},
+         #{result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >	
+<!-- 레시피 리스트 -->
+<select id="getAdminRecipeList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminRecipeList (
+         #{startNum}, #{endNum},#{key},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!-- 레시피 추천기능 활성화 -->
+
+<update id="adminChangeRecommend">
+	{
+         CALL adminChangeRecommend (
+         #{rnum}
+         ) 
+      }
+</update>
+<!--추천 레시피 목록-->
+<select id="getAdminPickRecipeList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getAdminPickRecipeList (
+         #{startNum}, #{endNum},#{key},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+
+<!--레시피 삭제  -->
+<delete id="adminDeleteRecipe">
+	{
+         CALL adminDeleteRecipe (
+         #{rnum1}
+         ) 
+      }
+</delete>
+<!-- 공지사항  -->
+<select id="getnoticeList" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getnoticeList (
+         #{startNum}, #{endNum},#{key},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!--공지사항 디테일  -->
+<select id="getNoticeDetail" statementType="CALLABLE" parameterType="java.util.HashMap">
+      {
+         CALL getNoticeDetail (
+         #{aseq},
+         #{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AdminMap}
+         ) 
+      }
+</select >
+<!--공지사항 입력  -->
+<insert id="insertNotice" statementType="CALLABLE" parameterType="com.ezen.todaytable.dto.AdminVO">
+	{
+         CALL insertNotice (
+         #{aid}, #{asubject},#{acontent},#{aimage},#{pwd},#{mustread}
+         ) 
+      }
+</insert>
+<!--공지사항 삭제  -->
+<delete id="adminDeleteNotice">
+	{
+         CALL adminDeleteNotice (
+         #{aseq}
+         ) 
+      }
+</delete>
+	
+</mapper>
